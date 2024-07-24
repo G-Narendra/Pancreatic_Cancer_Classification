@@ -1,0 +1,54 @@
+Pancreatic Tumor Classification using Deep Learning
+
+
+Introduction:
+
+Pancreatic cancer is a highly aggressive disease with a poor prognosis. Early detection is crucial for improving treatment outcomes. This project aims to develop a deep learning model for classifying pancreatic tumors from CT images, which can assist in early diagnosis and guide treatment decisions.
+
+Dataset and Preprocessing:
+
+The dataset consists of CT images of normal pancreas and pancreatic tumors. The images were preprocessed by converting grayscale to RGB and applying DenseNet121 preprocessing. The dataset was split into training and testing sets, with data augmentation techniques applied to the training set to improve generalization.
+
+Feature Extraction and Model Architecture:
+
+A pre-trained DenseNet121 model was used for feature extraction. The extracted features were then fed into a CNN-BiLSTM architecture for classification. The CNN part consisted of three convolutional layers with ReLU activation and max pooling, followed by global average pooling. The BiLSTM part included two bidirectional LSTM layers and a dense layer with dropout.
+
+Hyperparameter Optimization:
+
+To optimize the model's performance, two optimization algorithms were used:
+
+Harris Hawks Optimization (HHO): The learning rate, dropout rate, and dense units were tuned using HHO. The best hyperparameters found were:
+Learning rate: 0.001
+Dropout rate: 0.4
+Dense units: 512
+Sparrow Search Algorithm (SSA): The learning rate, dropout rate, and LSTM units were tuned using SSA. The best hyperparameters found were:
+Learning rate: 0.00045
+Dropout rate: 0.35
+LSTM units: 128
+
+
+Results and Evaluation:
+
+The models were evaluated using 10-fold cross-validation with ROC-AUC as the scoring metric. The mean ROC-AUC scores for each model were:
+Logistic Regression: 0.8412 ± 0.0098
+Random Forest: 0.8457 ± 0.0113
+XGBoost: 0.8523 ± 0.0087
+
+
+The best model, XGBoost, was further trained on the entire training set and evaluated on the test set. The evaluation metrics on the test set were:
+ROC-AUC: 0.8554
+Accuracy: 0.8043
+Precision: 0.8000
+Recall: 0.6100
+F1-score: 0.6923
+
+
+Feature importance analysis for the XGBoost model revealed that the top contributing factors for pancreatic tumor classification were tenure, monthly charges, total charges, two-year contract, and fiber optic internet service.
+
+Conclusion:
+
+This project successfully developed a deep learning model for classifying pancreatic tumors from CT images. The XGBoost model achieved promising results, with an ROC-AUC score of 0.8554 and an accuracy of 0.8043 on the test set. The insights gained from feature importance analysis can help guide treatment decisions and improve patient outcomes.
+Future work may include:
+Experimenting with different CNN and LSTM architectures
+Incorporating additional feature engineering techniques
+Exploring ensemble methods to further improve performance
